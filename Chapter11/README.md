@@ -429,7 +429,7 @@ computed: mapGetters([
   'getCounter'
 ]),
 ```
-여기서 **주의할 점은 위 방법들은 컴포넌트 자체에서 사용할 computed 속성과 함께 사용할 수 없다**는 점이다. 해결방안은 ES6 의 문법 ... 을 사용하면 된다.
+여기서 **주의할 점은 위 방법들은 컴포넌트 자체에서 사용할 computed 속성과 함께 사용할 수 없다**는 점이다. 해결방안은 ES6 의 문법 ...(확장 연산자) 을 사용하면 된다.
 ```
 // App.vue
 import { mapGetters } from 'vuex'
@@ -443,7 +443,7 @@ computed: {
   }
 }
 ```
-다만 ... 문법을 사용하려면 Babel stage-2 라이브러리 설치 및 babel preset 에 추가가 필요하다. 상세한 설명은 여기를 참고한다.
+다만 ... 문법을 사용하려면 Babel stage-2 라이브러리 설치 및 babel preset 에 추가가 필요하다. 상세한 설명은 [여기를](https://goo.gl/gHEaQ1) 참고한다.
 ## 11.5 Mutation(변이) 란?
 Mutations 이란 Vuex 의 데이터, 즉 state 값을 변경하는 로직들을 의미한다. Getters 와 차이점은
 
@@ -451,6 +451,13 @@ Mutations 이란 Vuex 의 데이터, 즉 state 값을 변경하는 로직들을 
 2. computed 가 아닌 methods 에 등록
 
 **Mutations 의 성격상 안에 정의한 로직들이 순차적으로 일어나야 각 컴포넌트의 반영 여부를 제대로 추적할 수가 있기 때문이다.**
+
+여태까지 우리는 counter 를 변경할 떄
+```
+return this.$store.state.counter++;
+return this.$store.state.counter;
+```
+와 같이 컴포넌트에서 직접 state 에 접근하여 변경하였지만, 이는 안티패턴으로써 Vue 의 Reactivity 체계와 상태관리 패턴에 맞지 않은 구현방식이다. 안티패턴인 이유는 여러 개의 컴포넌트에서 같은 state 값을 동시에 제어하게 되면, state 값이 어느 컴포넌트에서 호출해서 변경된건지 추적하기가 어렵기 때문이다. 하지만, 상태 변화를 명시적으로 수행함으로써 테스팅, 디버깅, Vue 의 Reactive 성질 준수 의 혜택을 얻는다.
 
 Mutations 가 낯설다면 기억하기 쉽게 Setters 로 이해하자.
 
@@ -501,6 +508,7 @@ methods: {
 this.$store.mutations.addCounter;
 ```
 이런 식의 접근이 불가능하고, commit 을 이용하여 mutations 이벤트를 호출해야 한다는 점이다. 앞서 설명한 추적 가능한 상태 변화를 위해 프레임워크가 이렇게 구조화가 되어 있다는 것을 알고 넘어가자.
+![](./img/vuex_03.png)
 
 ### 11.5.3 Mutations 에 인자 값 넘기기
 각 컴포넌트에서 Vuex 의 state 를 조작하는데 필요한 특정 값들을 넘기고 싶을 때는 commit() 에 두 번째 인자를 추가한다.
@@ -602,6 +610,8 @@ methods: {
   }
 },
 ```
+![](./img/vuex_04.png)
+
 ### 11.6.3 Actions 에 인자 값 넘기기
 Actions 에 인자를 넘기는 방법은 Mutations 와 유사하다.
 ```
