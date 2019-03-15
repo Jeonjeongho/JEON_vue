@@ -158,7 +158,7 @@ export const store = new Vuex.Store({
   //
 });
 ```
-그리고 Vue App이 등록된 main.js로 넘어가서 store.js를 불러와 등록하면 된다.
+<!-- 그리고 Vue App이 등록된 main.js로 넘어가서 store.js를 불러와 등록하면 된다. -->
 ## 11.4 게터
 ## 11.5 액션
 ## 11.6 대규모 애플리케이션에서의 Vuex 사용
