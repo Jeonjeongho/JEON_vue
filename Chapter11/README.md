@@ -393,6 +393,7 @@ computed: {
 },
 ```
 이렇게 getters 를 Vuex 에 등록하고 사용하였다. 참고로, computed 의 장점인 Caching 효과는 단순히 state 값을 반환하는 것이 아니라, getters 에 선언된 속성에서 filter(), reverse() 등의 추가적인 계산 로직이 들어갈 때 발휘된다.
+![](./img/vuex_02.png)
 
 ### 11.4.4 mapGetters
 Vuex 에 내장된 helper 함수, mapGetters 로 이미 위에서 한번 가독성이 올라간 코드를 더 직관적이게 작성할 수 있다.
