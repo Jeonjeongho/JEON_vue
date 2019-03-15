@@ -265,6 +265,8 @@ export default {
 ```
 Parent 컴포넌트 에서 props 로 counter 를 전달받던 방식에서, Vuex 의 state 인 counter 로 바로 접근하는 방식으로 변경됐다.
 
+![](./img/vuex_01.png)
+
 ## 11.4 Getters(게터)
 중앙 데이터 관리식 구조에서 발생하는 문제점은 **각 컴포넌트에서 Vuex의 데이터를 접근할 때 중복된 코드를 반복호출하게 되는 것**이다.
 
