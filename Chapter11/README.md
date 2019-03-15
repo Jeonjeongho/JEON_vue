@@ -58,9 +58,13 @@ Vue.js 의 상태관리 를 위한 패턴이자 라이브러리
 
 ### 11.3.1 간단한 Vue App 구성
 Vuex 적용을 위해 Parent 컴포넌트와 Child 컴포넌트를 갖는 간단한 앱을 아래처럼 만들었다.
+
 ![](.img/demo-ui.png)
+
 컴포넌트 폴더구조는 아래와 같다.
+
 ![](.img/folder-structure.png)
+
 * App.vue : **Parent 컴포넌트** 또는 **상위 컴포넌트**
 * Child.vue : **Child 컴포넌트** 또는 **하위 컴포넌트**
 이 앱의 특징은 아래와 같다.
@@ -158,7 +162,7 @@ export const store = new Vuex.Store({
   //
 });
 ```
-<!-- 그리고 Vue App이 등록된 main.js로 넘어가서 store.js를 불러와 등록하면 된다. -->
+그리고 Vue App이 등록된 main.js로 넘어가서 store.js를 불러와 등록하면 된다.
 ## 11.4 게터
 ## 11.5 액션
 ## 11.6 대규모 애플리케이션에서의 Vuex 사용
